@@ -15,3 +15,4 @@ Validación en FrontEnd y BackEnd y AJAX con Alertas.
 06 Conexion con la BD y registro con HP
 07 Generación de Entidades, información que Encontramos en un proyecto y representa a cada una de las tablas de la BD, si tenemos una tabla usuarios, debemos tener una entidad con el mismo nombre, se Genera la Clase Usuario con las propiedades y metodos getter y setter necesarios.G
 08 Login en capa de acceso a datos - Login y Registro con PHP PDO
+09 Ejecución del Login

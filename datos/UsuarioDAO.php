@@ -10,7 +10,7 @@ class UsuarioDAO extends Conexion {
 	protected static $cnx;
 
 	//Funcion que permite conectar en todo momento
-	private static function getConection(){
+	private static function getConexion(){
 		//self para invoccar a esta clase en si e invocar a $cnx
 		/*Con esto la variable cnx que se generado, se llene de la conexion cuando se establece la propia conexion*/
 		self::$cnx = Conexion::conectar();
@@ -50,11 +50,17 @@ class UsuarioDAO extends Conexion {
 		$resultado->execute();
 
 		//Contabilizamos el resultado, si hay resultados true en caso contrario false
-		if(count($resultado)){
+		//Se corrige ya que el resultado esta en un objeto estatico y no en la variable $resultado
+		//if(count($resultado)){
+		if($resultado->rowCount() > 0){
 			return true;
+			//Si se desea verificar resultado positivo y generara la salida en booleano del numero de resualtados de la consulta
+			//return "OK";
 		}
 		//en todo momento retornamos false salvo que existan valores contabilizados de la consulta
 		return false;
+		//Si se desea comprobar resultado falso
+		//return "Falso";
 	}
 }
 
