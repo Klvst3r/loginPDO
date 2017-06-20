@@ -34,8 +34,15 @@ class UsuarioDAO extends Conexion {
 	public static function login($usuario){
 		// Se genera un query seleccionando los campos que seran enviados via AJAXC y que no comprometan la seguridad
 		// del sistema al ser visibles vuia HTML.
+		
+		/*
 		$query = "SELECT id, nombre, usuario, email, privilegio, fecha_registro FROM usuarios WHERE usuario = :usuario AND 
 		password = :password";
+		*/
+		
+		//Seleccionamos toda la información del usuario 
+		$query = "SELECT * FROM usuarios WHERE usuario = :usuario AND password = :password";
+		
 		//iniciar la conexion
 		self::getConexion();
 		//Devuelve el resultado, preparando la consulta
@@ -53,12 +60,22 @@ class UsuarioDAO extends Conexion {
 		//Se corrige ya que el resultado esta en un objeto estatico y no en la variable $resultado
 		//if(count($resultado)){
 		if($resultado->rowCount() > 0){
-			return true;
+			//return true;
 			//Si se desea verificar resultado positivo y generara la salida en booleano del numero de resualtados de la consulta
 			//return "OK";
+			//Retorna el numero de filas con la función fetch y lo tratara como un array
+			$filas = $resultado->fetch();
+			
+			//Validamos contra inyecion SQL en el lado del BackEnd
+			if($filas["usuario"] == $usuario->getUsuario() && $filas["password"] == $usuario->getPassword()){
+				return true;
+				//return "OK";
+			}//if filas
+
 		}
 		//en todo momento retornamos false salvo que existan valores contabilizados de la consulta
 		return false;
+		//return "False";
 		//Si se desea comprobar resultado falso
 		//return "Falso";
 	}
