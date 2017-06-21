@@ -49,9 +49,17 @@ class UsuarioDAO extends Conexion {
 		$resultado = self::$cnx->prepare($query);
 
 		//Se envian los parametros el usuario, el objeto $usuario, para el usuario del formulario
-		$resultado->bindParam(":usuario", $usuario->getUsuario());
+		
+		$user = $usuario->getUsuario();
+
+
+		$resultado->bindParam(":usuario", $user);
 		//Lo mismo con el password, Pasandole el parametro directamente a este query
-		$resultado->bindParam(":password", $usuario->getPassword());
+		
+		$pass = $usuario->getPassword();
+
+
+		$resultado->bindParam(":password", $pass);
 
 		//Ejecutamos la consulta la conexion de tipo PDO
 		$resultado->execute();
@@ -65,17 +73,18 @@ class UsuarioDAO extends Conexion {
 			//return "OK";
 			//Retorna el numero de filas con la función fetch y lo tratara como un array
 			$filas = $resultado->fetch();
-			
+
 			//Validamos contra inyecion SQL en el lado del BackEnd
-			if($filas["usuario"] == $usuario->getUsuario() && $filas["password"] == $usuario->getPassword()){
+			if($filas['usuario'] == $user && $filas['password'] == $pass){
+
 				return true;
 				//return "OK";
+				
 			}//if filas
-
+	
 		}
 		//en todo momento retornamos false salvo que existan valores contabilizados de la consulta
 		return false;
-		//return "False";
 		//Si se desea comprobar resultado falso
 		//return "Falso";
 	}
