@@ -13,7 +13,9 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
-  
+    <!-- Se incluye la referencia CSS de la libreria overHang.js -->
+    <link rel="stylesheet" type="text/css" href="assets/css/overhang.min.css" />
+      
 
   </head>
 

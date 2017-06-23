@@ -17,4 +17,6 @@ Validación en FrontEnd y BackEnd y AJAX con Alertas.
 08 Login en capa de acceso a datos - Login y Registro con PHP PDO
 09 Ejecución del Login.
 10 Vista Principal del Proyecto - Configuración Inicial de Bootstrap y agregación del plugin de Bootstrap en Sublime Text
-11 Vista login y validación - 
+11 Vista login y validación
+12 Envio de Formulario por AJAX - Validación del Formulario mediante jQuery
+13 Notificación personalizada con jQuery - Validación  con alertas mediante libreria de notificaciones.

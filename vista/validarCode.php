@@ -4,6 +4,9 @@
 
 include '../controlador/UsuarioControlador.php';
 
+//Header JSON PHP
+header('Content-type: application/json');
+
 //Vamos al final a obtener un resultado por AJAX
 $resultado = array();
 
