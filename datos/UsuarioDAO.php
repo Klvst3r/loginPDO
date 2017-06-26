@@ -88,6 +88,55 @@ class UsuarioDAO extends Conexion {
 		//Si se desea comprobar resultado falso
 		//return "Falso";
 	}
+
+	/*
+	 Despues de hacer la validación hay que obtener el usuario
+	 */
+	/**
+	 * Metodo que sirve para obtener un usuario
+	 *
+	 * @param object $usuario
+	 * @return object
+	 */
+	
+	 public static function getUsuario($usuario){
+		// Hay que especificar que campos necesitamos
+
+		$query = "SELECT id, nombre, email, usuario, privilegio, fecha_registro FROM usuarios WHERE usuario = :usuario AND 
+		password = :password";
+		
+		self::getConexion();
+		
+		$resultado = self::$cnx->prepare($query);
+
+		$user = $usuario->getUsuario();
+		$resultado->bindParam(":usuario", $user);
+		
+		$pass = $usuario->getPassword();
+		$resultado->bindParam(":password", $pass);
+
+		//$resultado->bindParam(":usuario", $usuario->getUsuario());
+		//$resultado->bindParam("password", $usuario->getPassword());
+		
+		$resultado->execute();
+
+		$filas = $resultado->fetch();
+
+		$usuario = new Usuario();
+		//Enviamos la información por medio de sus propiedades
+		//De esta manera tendremos ya cargado en el nuevo objeto en la instancia de la entidad 
+		$usuario->setId($filas["id"]);
+		$usuario->setNombre($filas["nombre"]);
+		$usuario->setUsuario($filas["usuario"]);
+		$usuario->setEmail($filas["email"]);
+		$usuario->setPrivilegio($filas["privilegio"]);
+		$usuario->setFecha_registro($filas["fecha_registro"]);
+
+		//Retornamos la entidad
+		return $usuario;
+		
+	} //function getUsuario
+
 }
 
  ?>

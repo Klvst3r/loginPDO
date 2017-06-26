@@ -34,7 +34,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		if(UsuarioControlador::login($txtUsuario, $txtPassword)){
 			//return print("Logeado");
 			//Retornamos los valor en JSON para que sea entendido por Javascript para su validación por AJAX
-			return print(json_encode($resultado));
+			//return print(json_encode($resultado));
+			
+			//por medio del controlador duplicamos 
+			$usuario  = UsuarioControlador::getUsuario($txtUsuario, $txtPassword);
+			//por que estamos retornando el objeto con sus funciones
+			echo $usuario->getNombre();
+			
 		}
 		
 	}

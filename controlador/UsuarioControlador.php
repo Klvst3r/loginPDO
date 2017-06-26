@@ -15,6 +15,21 @@ class UsuarioControlador {
 		//retornando el resuldao de la operación
 		return UsuarioDAO::login($obj_usuario);
 	}
+
+	// Obtenemos los datos de la base de datos
+	public function getUsuario($usuario, $password){
+
+		$obj_usuario = new Usuario();
+		
+		$obj_usuario->setUsuario($usuario);
+		$obj_usuario->setPassword($password);
+		//Enviamos el objeto desde UsuariosDAO
+		return UsuarioDAO::getUsuario($obj_usuario);
+
+	}
+
+
+
 }
 
  ?>
