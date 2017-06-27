@@ -23,4 +23,5 @@ Validación en FrontEnd y BackEnd y AJAX con Alertas.
 14 Seguridad en el envio del Login - Ayudas y Validaciones de campos en el area de seguridad contra hacking del sistema
 15 Obteniendo el usuario para agregarlo a la sesión - Recuperación de datos de la BD con MySQL y retornarlo via AJAX
 16 Trabajando con la sesión - Mantener al usuario logueado en la pagina.
+17 Diferentes tipos de usuario - Redirección por privilegios
 
