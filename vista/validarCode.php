@@ -6,6 +6,9 @@ include '../controlador/UsuarioControlador.php';
 //Uso de la funcion validar
 include('../helps/helps.php');
 
+//Crear una sesión e iniciarla
+session_start();
+
 
 //Header JSON PHP
 header('Content-type: application/json');
@@ -33,14 +36,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		//echo UsuarioControlador::login("admin","1234");
 		if(UsuarioControlador::login($txtUsuario, $txtPassword)){
 			//return print("Logeado");
-			//Retornamos los valor en JSON para que sea entendido por Javascript para su validación por AJAX
-			//return print(json_encode($resultado));
+		
 			
 			//por medio del controlador duplicamos 
 			$usuario  = UsuarioControlador::getUsuario($txtUsuario, $txtPassword);
 			//por que estamos retornando el objeto con sus funciones
-			echo $usuario->getNombre();
+			//echo $usuario->getNombre();
+			//Ya con la variable de sessión le asignamos el valor a un array asociativo
+			$_SESSION["usuario"] = array(
+				"id"		=> $usuario->getId(),
+				"nombre"	=> $usuario->getNombre(),
+				"usuario"	=> $usuario->getUsuario(),
+				"email"		=> $usuario->getEmail(),
+				"privilegio"=> $usuario->getPrivilegio()
+				);
 			
+			//Retornamos los valor en JSON para que sea entendido por Javascript para su validación por AJAX
+			return print(json_encode($resultado));
 		}
 		
 	}

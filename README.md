@@ -21,4 +21,6 @@ Validación en FrontEnd y BackEnd y AJAX con Alertas.
 12 Envio de Formulario por AJAX - Validación del Formulario mediante jQuery
 13 Notificación personalizada con jQuery - Validación  con alertas mediante libreria de notificaciones.
 14 Seguridad en el envio del Login - Ayudas y Validaciones de campos en el area de seguridad contra hacking del sistema
-15 Obteniendo el usuario para agregarlo a la sesión - 
+15 Obteniendo el usuario para agregarlo a la sesión - Recuperación de datos de la BD con MySQL y retornarlo via AJAX
+16 Trabajando con la sesión - Mantener al usuario logueado en la pagina.
+
