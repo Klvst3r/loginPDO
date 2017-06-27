@@ -1,6 +1,7 @@
 <?php
+include 'partials/head.php';
 
-session_start();
+//session_start();
 //redirigir dependiendo de los privilegios del usuario
 
 //Condicional para saber si existe el usuario en la BD
@@ -16,7 +17,6 @@ header("location:login.php");
 }
 ?>
 
-<?php include 'partials/head.php'; ?>
 <?php include 'partials/menu.php'; ?>
 
 
