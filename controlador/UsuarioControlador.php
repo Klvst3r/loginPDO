@@ -28,6 +28,22 @@ class UsuarioControlador {
 
 	}
 
+	public function registrar($nombre, $email, $usuario, $password, $privilegio){
+
+		$obj_usuario = new Usuario();
+		
+		$obj_usuario->setNombre($nombre);
+		$obj_usuario->setEmail($email);
+		$obj_usuario->setUsuario($usuario);
+		$obj_usuario->setPassword($password);
+		$obj_usuario->setPrivilegio($privilegio);
+
+		//Enviamos el objeto desde UsuariosDAO
+		return UsuarioDAO::registrar($obj_usuario);
+
+	}
+
+
 
 
 }

@@ -25,3 +25,4 @@ Validación en FrontEnd y BackEnd y AJAX con Alertas.
 16 Trabajando con la sesión - Mantener al usuario logueado en la pagina.
 17 Diferentes tipos de usuario y cierre de sesión - Redirección por privilegios
 18 Formulario de registro y capa de datos - Preparación de Formulario y clase del registro de usuarios
+19 Controlador y capa de datos del formulario de registro de usuario
