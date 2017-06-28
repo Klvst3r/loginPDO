@@ -137,6 +137,49 @@ class UsuarioDAO extends Conexion {
 		
 	} //function getUsuario
 
+	/**
+	 * Metodo que sirve para registrar usuarios
+	 *
+	 * @param object $usuario
+	 * @return boolean
+	 */
+	public static function registrar($usuario){
+		// Se genera un query para insertar valores en la BD, se envian los datos encriptados evitando inyeccion de codigo. 
+		$query = "INSERT INTO usuarios (
+			nombre, email, usuario, password, privilegio) VALUES 
+			(:nombre, :email, :usuario, :password, :privilegio)";
+		
+		//tener la conexion
+		self::getConexion();
+		
+		//Preparación de la query 
+		$resultado = self::$cnx->prepare($query);
+
+		//Se envian parametro por parametro de acuerdo al formulario de registro, el objeto $usuario
+		
+		$name = $usuario->getNombre();
+		$resultado->bindParam(":nombre", $name);
+
+		$mail = $usuario->getEmail();
+		$resultado->bindParam(":email", $mail);
+
+		$user = $usuario->getUsuario();
+		$resultado->bindParam(":usuario", $user);
+		
+		$pass = $usuario->getPassword();
+		$resultado->bindParam(":password", $pass);
+
+		$privilege = $usuario->getPrivilegio();
+		$resultado->bindParam(":privilegio", $privilege);		
+
+		//Ejecutamos la consulta la conexion de tipo PDO y registra los datos a la BD
+		if($resultado->execute()){
+			return true;
+		}
+
+		return false;
+
+	}
+
 }
 
- ?>
